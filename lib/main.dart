@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -48,68 +50,85 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  final List<Item> _data = generateItems(10);
+  final List<Item> _data2 = generateItems2(10);
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  // Widget _listContact(List<Item> items) {
+  //   return
+  // }
+
+  Widget _buildListPanel() {
+    return ExpansionPanelList(
+      expansionCallback: (panelIndex, isExpanded) {
+        setState(() {
+          _data[panelIndex].isExpanded = !isExpanded;
+        });
+      },
+      children: _data.map((item) {
+        return ExpansionPanel(
+          headerBuilder: (context, isExpanded) {
+            return ListTile(title: Text(item.headerValue));
+          },
+          body: ExpansionPanelList(
+            children: _data2.map((e) {
+              return ExpansionPanel(
+                headerBuilder: (BuildContext context, bool isExpanded) {
+                  return Text('Panel ${item.headerValue}' + e.headerValue);
+                },
+                body: ListTile(
+                  title: Text(item.expandedValue),
+                  onTap: () {
+                    setState(() {
+                      _data.removeWhere((element) => item == element);
+                    });
+                  },
+                ),
+              );
+            }).toList(),
+          ),
+          isExpanded: item.isExpanded,
+        );
+      }).toList(),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+          leading: const Icon(Icons.arrow_back),
+          title: const Text('Danh bạ khẩn cấp')),
+      body: SingleChildScrollView(child: _buildListPanel()),
     );
   }
+}
+
+class Item {
+  String expandedValue;
+  String headerValue;
+  bool isExpanded;
+
+  Item({
+    required this.expandedValue,
+    required this.headerValue,
+    required this.isExpanded,
+  });
+}
+
+List<Item> generateItems(int numberOfItems) {
+  return List.generate(numberOfItems, (index) {
+    return Item(
+        headerValue: 'Panel $index',
+        expandedValue: 'This is item number $index',
+        isExpanded: true);
+  });
+}
+
+List<Item> generateItems2(int numberOfItems) {
+  return List.generate(numberOfItems, (index) {
+    return Item(
+        headerValue: 'detail $index',
+        expandedValue: 'detail This is item number $index',
+        isExpanded: true);
+  });
 }
