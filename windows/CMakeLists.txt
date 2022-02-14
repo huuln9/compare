@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(qr_scan_img LANGUAGES CXX)
+project(emergency_contacts LANGUAGES CXX)
 
-set(BINARY_NAME "qr_scan_img")
+set(BINARY_NAME "emergency_contacts")
 
 cmake_policy(SET CMP0063 NEW)
 

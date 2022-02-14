@@ -1,4 +1,4 @@
-name: qr_scan_img
+name: emergency_contacts
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -29,10 +29,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  qr_code_tools: ^0.0.7
-  image_picker: ^0.8.4+8
-  path_provider: ^2.0.9
-  rxdart: ^0.27.3
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

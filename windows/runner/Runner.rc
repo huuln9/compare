@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "qr_scan_img" "\0"
+            VALUE "FileDescription", "emergency_contacts" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "qr_scan_img" "\0"
+            VALUE "InternalName", "emergency_contacts" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2022 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "qr_scan_img.exe" "\0"
-            VALUE "ProductName", "qr_scan_img" "\0"
+            VALUE "OriginalFilename", "emergency_contacts.exe" "\0"
+            VALUE "ProductName", "emergency_contacts" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

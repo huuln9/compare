@@ -1,6 +1,6 @@
 {
-    "name": "qr_scan_img",
-    "short_name": "qr_scan_img",
+    "name": "emergency_contacts",
+    "short_name": "emergency_contacts",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

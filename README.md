@@ -1,4 +1,4 @@
-# qr_scan_img
+# emergency_contacts
 
 A new Flutter project.
 

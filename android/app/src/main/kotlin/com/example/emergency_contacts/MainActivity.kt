@@ -1,4 +1,4 @@
-package com.example.qr_scan_img
+package com.example.emergency_contacts
 
 import io.flutter.embedding.android.FlutterActivity
 
