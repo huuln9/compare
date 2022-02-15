@@ -69,13 +69,19 @@ class _MyHomePageState extends State<MyHomePage> {
           headerBuilder: (context, isExpanded) {
             return ListTile(title: Text(item.headerValue));
           },
-          body: ListTile(
-            title: Text(item.expandedValue),
-            onTap: () {
-              setState(() {
-                _data.removeWhere((element) => item == element);
-              });
-            },
+          body: Column(
+            children: [
+              for (var e in _data2)
+                ListTile(
+                  title: Text(e.expandedValue),
+                  onTap: () {
+                    setState(() {
+                      _data.removeWhere((element) => item == element);
+                    });
+                  },
+                  trailing: const Icon(Icons.phone_callback_rounded),
+                ),
+            ],
           ),
           isExpanded: item.isExpanded,
         );
