@@ -49,7 +49,13 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               for (var e in _data2)
                 ListTile(
+                  leading: ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: Image.asset("assets/images/pccc.png"),
+                  ),
                   title: Text(e.expandedValue),
+                  subtitle: Text("01232156465"),
+                  contentPadding: EdgeInsets.all(10),
                   onTap: () {
                     setState(() {
                       _data.removeWhere((element) => item == element);
